@@ -1,124 +1,153 @@
-l; /* et islogged = false;
-let rol = "admin";
-let permisos = true;
+// let isLogged = false;
+// let rol = "pepe";
+// let permisos = true;
 
-if (islogged || rol === " admin" || permisos) {
-  console.log("entra en el if");
-}
-if (islogged && rol === "admin" && permisos) {
-  console.log("entra en el IF");
-}
- */
+// if (isLogged || rol === "admin" || permisos) {
+//   console.log("entra en el if");
+// }
+// if (isLogged && rol === "admin" && permisos) {
+//   console.log("entra en el if");
+// }
 
 // FUNCIONES
 // declarada
 
-function sumar() {
-  // bloque de codigo
-  console.log("esto esta dentro de la función");
-  if (true) {
-    console.log("estoy dentro");
-  }
-}
+// CREANDO LA FUNCION O DECLARANDOLA
+// function sumar() {
+//   // BLOQUE DE CODIGO
+//   console.log("esto esta dentro de la funcion");
+//   if (true) {
+//     console.log("estoy en el if dentro de la funcion");
+//   }
+//   console.log("-----------");
+// }
 
-sumar();
+// let botonSumar = document.getElementById("btn");
+// botonSumar.addEventListener("click", sumar)
 
-// let userName = prompt("Ingresa tu nombre");
-// {
-//   alert("bienvenido ${userName} ");
+// let userName = prompt("ingresa tu nombre");
+
+// function saludar() {
+//   alert(`Hola ${userName} bienvenido a nuestra app`);
 // }
 
 // saludar();
 
-// PARÁMETROS
+// parametros
 
-function sumar(numeroUno, numeroDos, nombre) {
+function sumar(numeroUno = 0, numeroDos = 0, nombre = "sin nombre") {
   console.log(numeroUno + numeroDos);
   console.log("hola " + nombre);
 }
 
-// ARGUMENTOS
+// argumentos
 sumar(5, 7, "pepe");
-sumar(1, 3, "juan");
-sumar(2, 4, "marta");
+sumar(1, 2, "maria");
+// sumar(2, 4, "marta");
 
-//input - proceso - output
+console.log("sigue el camino");
 
 function restar(a, b) {
-  //salida explicita
+  // salida explicita
   if (typeof a === "number" && typeof b === "number") {
     return a - b;
   } else {
-    return "uno de los parametros no es un numero";
+    return "uno de los dos parametros no es un numero";
   }
-
-  //salida implicita
+  // salida implicita
 }
 
-let resultado = restar(10, "pepe");
-// SIEMPRE en la ejecución de una función, se transforma
-// en lo que la función retorna, si yo no retorno nada, js retorna undefined
+let resultado = restar(10, "pepe"); // ---> 5
+// siempre siempre la ejecucion de una funcion, se transforma
+// en lo que la funcion retorna, si yo no retorno nada, javascript retorna undefined
 
 console.log(resultado);
 
-//scope ---> alcance de una variable
+// SCOPE --> Alcance de una variable
 
-//locales
-
-console.log(user);
-
+// LOCALES
 let user = "juan";
 if (true) {
-  let user = "juan";
+  let user = "pepe";
   console.log(user);
 }
 
-// FUNCIONES EXPRESADAS TIPO FLECHAS (arrow)
-let functionNumero = function (numero) {
+// if (true) {
+//     // BLOQUE DE CODIGO
+//   let user = "juan";
+//   console.log(user);
+// }
+
+// FUNCIONES EXPRESADAS o ANONIMAS
+
+let funcionNumero = function (numero) {
   return 10 * numero;
 };
-let resultadoFunction = functionNumero(5);
+let resultadoFuncion = funcionNumero(5);
+// let resultadoFuncion = funcionNumero(5);
+// function funcionNumero(numero) {
+//   return 10 * numero;
+// }
 
-console.log(resultadoFunction);
+console.log(resultadoFuncion);
 
-let functionFlecha = (unNumero) => {
-  return unNumero * 3;
-};
+// FUNCION EXPRESADA DE TIPO FLECHA
+// ARROW FUNCTION
 
-let resultadoFlecha = functionFlecha(10);
+const funcionFlecha = (unNumero) => unNumero * 3;
+
+let resultadoFlecha = funcionFlecha(10);
 console.log(resultadoFlecha);
 
-//  Quiero una funcion que recibe 2 numeros por parametros y una opcion para saber
+const sumarFlecha = (n1, n2, n3) => n1 + n2 + n3;
+
+let resultadoSuma = sumarFlecha(1, 3, 5);
+console.log(resultadoSuma);
+
+sumarFlecha();
+sumarFlecha();
+sumarFlecha();
+sumarFlecha();
+sumarFlecha();
+sumarFlecha();
+
+// Quiero una funcion que reciba 2 numeros por parametros y una opcion para saber
 // si quiero sumarlos o restarlos
-//funcion (2, 5, "sumar")
-// funcion( 2, 5, "restar")
+// funcion( 2, 5, "suma")
+// funcion( 2, 5, "resta")
 
 // retornar el resultado
 // los numeros deben ser pedidos por PROMPT
 
 const operacion = (n1, n2, tipo) => {
-  //flag (bandera)
+  // flag o bandera
 
   if (n1 === undefined || n2 === undefined) {
     return "uno de los numeros no esta correcto";
   }
 
-  if (typeof n1 !== "number" || typeof n2 !== "number")
-    if (tipo === "suma") {
-      return n1 + n2;
-    } else {
-      return n1 - n2;
-    }
+  if (typeof n1 !== "number" || typeof n2 !== "number") {
+    return "alguno de los numeros no es un numero";
+  }
+
+  if (tipo === "suma") {
+    return n1 + n2;
+  } else if (tipo === "resta") {
+    return n1 - n2;
+  } else {
+    return "el tipo de operacion no es correcto";
+  }
 };
 
 let primerNumero = Number(prompt("ingresa el primer numero"));
 let segundoNumero = Number(prompt("ingresa el segundo numero"));
-let tipoOperacion = Number(prompt("tipo de opreacion"));
+let tipoOperacion = prompt("tipo de operacion");
 
-let a = operacion(15, 3, "suma"); //---> 18
-let b = operacion(15, 3, "resta"); //---> 12
-let c = operacion(15, 3, "pepe"); //---> undefined
+let a = operacion(primerNumero, segundoNumero, tipoOperacion); // ---> 18
 
-console.log(a);
-console.log(b);
-console.log(c);
+// let texto = document.getElementById("resultado");
+// texto.innerText = a;
+// let b = operacion(primerNumero, segundoNumero, ); // ---> 12
+// console.log(b);
+// let c = operacion(primerNumero, segundoNumero, ); // ---> undefined
+// console.log(c);
